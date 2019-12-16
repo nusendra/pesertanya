@@ -1,60 +1,59 @@
 <script>
-	export let segment;
+  import Hero from "./Hero.svelte";
+
+  let collapsed = false;
+
+  let navbarToggler = "navbar-toggler collapsed";
+  let ariaExpanded = "false";
+  let navbarCollapse = "collapse navbar-collapse";
+
+  const toggleNavbar = () => {
+    collapsed = !collapsed;
+
+    if (collapsed) {
+      navbarToggler = "navbar-toggler";
+      ariaExpanded = "true";
+      navbarCollapse = "collapse navbar-collapse show";
+    } else {
+      navbarToggler = "navbar-toggler collapsed";
+      ariaExpanded = "false";
+      navbarCollapse = "collapse navbar-collapse";
+    }
+  };
 </script>
 
-<style>
-	nav {
-		border-bottom: 1px solid rgba(255,62,0,0.1);
-		font-weight: 300;
-		padding: 0 1em;
-	}
+<header id="header-wrap">
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <a href="index.html" class="navbar-brand">
+        <img src="images/logo.png" alt="" />
+      </a>
+      <button
+        on:click={toggleNavbar}
+        class={navbarToggler}
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded={ariaExpanded}
+        aria-label="Toggle navigation">
+        <i class="lni-menu" />
+      </button>
+      <div class={navbarCollapse} id="navbarCollapse">
+        <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+          <li class="nav-item active">
+            <a class="nav-link" href="#hero-area">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar End -->
 
-	ul {
-		margin: 0;
-		padding: 0;
-	}
-
-	/* clearfix */
-	ul::after {
-		content: '';
-		display: block;
-		clear: both;
-	}
-
-	li {
-		display: block;
-		float: left;
-	}
-
-	.selected {
-		position: relative;
-		display: inline-block;
-	}
-
-	.selected::after {
-		position: absolute;
-		content: '';
-		width: calc(100% - 1em);
-		height: 2px;
-		background-color: rgb(255,62,0);
-		display: block;
-		bottom: -1px;
-	}
-
-	a {
-		text-decoration: none;
-		padding: 1em 0.5em;
-		display: block;
-	}
-</style>
-
-<nav>
-	<ul>
-		<li><a class:selected='{segment === undefined}' href='.'>home</a></li>
-		<li><a class:selected='{segment === "about"}' href='about'>about</a></li>
-
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch class:selected='{segment === "blog"}' href='blog'>blog</a></li>
-	</ul>
-</nav>
+  <Hero />
+</header>
