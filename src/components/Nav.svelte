@@ -24,7 +24,7 @@
 
 <header id="header-wrap">
   <!-- Navbar Start -->
-  <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+  <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar" style="min-height: 60px;">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <a href="/" class="navbar-brand">
