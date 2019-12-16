@@ -27,7 +27,7 @@
   <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <a href="index.html" class="navbar-brand">
+      <a href="/" class="navbar-brand">
         <img src="images/new-logo.png" alt="" width="150px"/>
       </a>
       <button
